@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "framer-motion": "^6.2.8",
+    "global": "^4.4.0",
+    "styled-components": "^5.3.3",
+    "yarn": "^1.22.17"
+  }
+}

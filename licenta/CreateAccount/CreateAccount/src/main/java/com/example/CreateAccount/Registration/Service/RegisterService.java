@@ -1,10 +1,9 @@
 package com.example.CreateAccount.Registration.Service;
 
-import com.example.CreateAccount.AppUser.Exceptions.EmailExceptionIsInvalid;
-import com.example.CreateAccount.AppUser.Model.Users;
-import com.example.CreateAccount.AppUser.Model.AppUserRole;
-import com.example.CreateAccount.AppUser.Service.AppUserService;
-import com.example.CreateAccount.Registration.Utils.EmailValidator;
+import com.example.CreateAccount.UserFunctionality.Exceptions.EmailExceptionIsInvalid;
+import com.example.CreateAccount.UserFunctionality.Model.Users;
+import com.example.CreateAccount.UserFunctionality.Service.UserService;
+import com.example.CreateAccount.Registration.Utility.EmailValidator;
 import com.example.CreateAccount.Registration.Model.RegistrationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RegisterService {
 
-    private final AppUserService appUserService;
+    private final UserService appUserService;
     private final EmailValidator emailValidator;
 
     public String register(RegistrationRequest request) {
@@ -24,12 +23,14 @@ public class RegisterService {
         }
 
         return appUserService.singUpUser(new Users(
-                request.getUsername(),
                 request.getFirstName(),
                 request.getLastName(),
+                request.getUsername(),
                 request.getEmail(),
                 request.getPassword(),
-                AppUserRole.USER
+                request.getRole()
         ));
     }
 }
+
+//TODO: de trimis un cod pe telefon pt confirmare

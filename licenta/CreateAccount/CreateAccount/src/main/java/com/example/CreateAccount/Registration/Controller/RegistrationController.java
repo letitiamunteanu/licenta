@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/api/registration")
+@RequestMapping(path = "/api/createAccount")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class RegistrationController {
 
     private final RegisterService registerService;
 
-    @PostMapping("/save")
+    @PostMapping("/register")
     public String register(@RequestBody RegistrationRequest request){
         return registerService.register(request);
     }
