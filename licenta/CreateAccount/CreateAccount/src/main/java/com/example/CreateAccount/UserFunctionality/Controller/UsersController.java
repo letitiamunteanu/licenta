@@ -9,6 +9,7 @@ import com.example.CreateAccount.UserFunctionality.Model.Users;
 import com.example.CreateAccount.UserFunctionality.Service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -35,14 +36,14 @@ public class UsersController {
     }
 
     @GetMapping("/getUserByUsername/{username}")
-    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR')")
+    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR', 'pacient', 'PACIENT')")
     public Users getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
 
     @GetMapping("/getUserByEmail/{email}")
-    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR')")
-    public Users getUserByEmail(@PathVariable String email) {
+    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR', 'pacient', 'PACIENT')")
+    public boolean getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 
@@ -83,7 +84,7 @@ public class UsersController {
     }
 
     @DeleteMapping("deleteUser/{username}")
-    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR', 'pacient', 'PACIENT')")
+    //@PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR', 'pacient', 'PACIENT')")
     public String deleteUserAccount(@PathVariable String username) {
         return userService.deleteUserAccount(username);
     }
@@ -129,6 +130,12 @@ public class UsersController {
         } else {
             throw new RuntimeException("Refresh token is missing");
         }
+    }
+
+    @GetMapping("/checkPassword/{username}/{password}")
+    @PreAuthorize("hasAnyAuthority('admin', 'ADMIN', 'doctor', 'DOCTOR', 'pacient', 'PACIENT')")
+    public ResponseEntity<?> checkPassMatching(@PathVariable String username, @PathVariable String password){
+        return ResponseEntity.ok().body(userService.checkPasswordMatching(username, password));
     }
 }
 

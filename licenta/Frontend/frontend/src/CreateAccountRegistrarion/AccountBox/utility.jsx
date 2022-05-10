@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const BoxContainer = styled.div`
+    //border: ${props => props.border ? props.border : 'auto'};
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -33,8 +34,8 @@ export const BoldLink = styled.a`
 `;
 
 export const Input = styled.input`
-
-    width: 60%;
+    width: ${props => props.width ? props.width : 'auto'};
+    //width: 60%;
     height: 42px;
     outline: none;
     border: 1px solid rgba(200, 200, 200, 0.3);
@@ -60,8 +61,9 @@ export const Input = styled.input`
 
 `;
 
-export const SubmitButtom = styled.button`
-    width: 45%;
+export const SubmitButton = styled.button`
+    width: ${props => props.width ? props.width : 'auto'};
+    //width: 45%;
     padding: 10px;
     color: #fff;
     font-size: 15px;
@@ -74,5 +76,28 @@ export const SubmitButtom = styled.button`
     
     &:hover{
         filter: brightness(1.03);
+    }
+`;
+
+export const Button = styled.button`
+    width: ${props => props.width ? props.width : 'auto'};
+    background: ${props => props.background ? props.background : 'primary'};
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 100px 100px 100px 100px;
+    cursor: pointer;
+    transition: all, 240ms ease-in-out;
+    background: #94e9e4;
+    margin-right: 7px;
+    margin-top: 5px;
+
+    
+    &:hover{
+        filter: brightness(1.03);
+        color:black;
+        background-color: white;
     }
 `;

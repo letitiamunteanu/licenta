@@ -1,18 +1,18 @@
 package com.example.pacientiDr.Controller;
 
-import com.example.pacientiDr.Model.Patients;
 import com.example.pacientiDr.Model.Symptom;
 import com.example.pacientiDr.Services.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/symptoms")
+@CrossOrigin("*")
 public class SymptomController {
 
     private final SymptomService symptomService;
@@ -23,27 +23,32 @@ public class SymptomController {
     }
 
     @PostMapping("/addSymptom")
-    public Symptom addNewSymptom(@RequestBody Symptom symptom, @RequestHeader("Authorization") String jwt){
-        return symptomService.addNewSymptom(symptom, jwt);
+    public ResponseEntity<?> addNewSymptom(@RequestBody Symptom symptom, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(symptomService.addNewSymptom(symptom, jwt));
     }
 
     @GetMapping("/name/{name}")
-    public Symptom getSymptomByName(@PathVariable String name, @RequestHeader("Authorization") String jwt){
-        return symptomService.getSymptomByName(name, jwt);
+    public ResponseEntity<?> getSymptomByName(@PathVariable String name, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(symptomService.getSymptomByName(name, jwt));
     }
 
     @GetMapping("/id/{id}")
-    public Symptom getSymptomByName(@PathVariable Integer id, @RequestHeader("Authorization") String jwt){
-        return symptomService.getSymptomById(id, jwt);
+    public ResponseEntity<?> getSymptomByName(@PathVariable Integer id, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(symptomService.getSymptomById(id, jwt));
     }
 
     @GetMapping("/allSymptoms")
-    public List<Symptom> getAllSymptoms(@RequestHeader("Authorization") String jwt){
-        return symptomService.getAllSymptoms(jwt);
+    public ResponseEntity<?> getAllSymptoms(@RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(symptomService.getAllSymptoms(jwt));
+    }
+
+    @GetMapping("/allSymptomsContaining/{chars}")
+    public ResponseEntity<?> getAllSymptomsContaining(@PathVariable String chars){
+        return ResponseEntity.ok().body(symptomService.getAllSymptomsContaining(chars));
     }
 
     @PatchMapping("/{id}")
-    public Symptom updateSymptom(@PathVariable Integer id, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt) {
+    public ResponseEntity<?> updateSymptom(@PathVariable Integer id, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt) {
 
         Symptom searchedSymptom = symptomService.getSymptomById(id, jwt);
 
@@ -56,11 +61,12 @@ public class SymptomController {
             ReflectionUtils.setField(field, searchedSymptom, v);
         });
 
-        return symptomService.update(id, searchedSymptom, jwt);
+        return ResponseEntity.ok().body(symptomService.update(id, searchedSymptom, jwt));
     }
 
     @DeleteMapping("/{name}")
-    public void deleteSymptom(@PathVariable String name, @RequestHeader("Authorization") String jwt){
+    public ResponseEntity<?> deleteSymptom(@PathVariable String name, @RequestHeader("Authorization") String jwt){
         symptomService.delete(name, jwt);
+        return ResponseEntity.ok().body("");
     }
 }

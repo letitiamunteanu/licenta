@@ -40,14 +40,26 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         log.info("Username is: {} and password is: {}", username, password);
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
-        return authenticationManager.authenticate(authenticationToken);
+        System.out.println("auth token" + authenticationToken);
+
+//        System.out.println("at din attempt");
+        Authentication at = authenticationManager.authenticate(authenticationToken);
+//        System.out.println(at.isAuthenticated());
+//        System.out.println(at.getAuthorities());
+//        System.out.println(at.getPrincipal());
+//        System.out.println(at.toString());
+//        System.out.println(at.getCredentials());
+//        System.out.println(at.getDetails());
+//        System.out.println("imi trece de ele");
+        return at;
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
 
         User user = (User)authentication.getPrincipal();
-
+        System.out.println("user from success att");
+        System.out.println(user);
         String accessToken = accessTokenCreator(user.getUsername(), request.getRequestURL().toString(), user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()).get(0));
         String refreshToken = refreshTokenCreator(user.getUsername(), request.getRequestURL().toString());
 

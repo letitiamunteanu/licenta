@@ -1,6 +1,7 @@
 package com.example.pacientiDr.Model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "boli")

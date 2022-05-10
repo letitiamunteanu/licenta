@@ -72,13 +72,8 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public Users getUserByEmail(String email){
-        if(!userRepository.findByEmail(email).equals("")){
-            return userRepository.findByEmail(email);
-        }
-        else {
-            throw new UserExceptionNotFoundByEmail(email);
-        }
+    public boolean getUserByEmail(String email){
+       return userRepository.existsByEmail(email);
     }
 
     public List<Users> getUserByFirstName(String firstName){
@@ -96,7 +91,7 @@ public class UserService implements UserDetailsService {
                 user.setFirstName(newUserCredentials.getFirstName());
                 user.setLastName(newUserCredentials.getLastName());
                 user.setEmail(newUserCredentials.getEmail());
-                user.setPassword(newUserCredentials.getPassword());
+                user.setPassword(bCryptPasswordEncoder.encode(newUserCredentials.getPassword()));
                 user.setRole(newUserCredentials.getRole());
                 return userRepository.save(newUserCredentials);
             }).orElseGet(() -> {
@@ -119,5 +114,14 @@ public class UserService implements UserDetailsService {
         else{
             throw new UserExceptionNotFound(username);
         }
+    }
+
+    public String checkPasswordMatching(String username, String password){
+
+        Users obj = userRepository.findByUsername(username);
+        if(bCryptPasswordEncoder.matches(password, obj.getPassword())){
+            return "da";
+        }
+        else return "nu";
     }
 }

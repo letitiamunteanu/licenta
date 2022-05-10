@@ -1,9 +1,6 @@
 package com.example.CreateAccount.Security.Jwt.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 
@@ -13,6 +10,7 @@ import static com.example.CreateAccount.Security.Jwt.Functionality.JwtDecoder.jw
 
 @RestController
 @RequestMapping("/api/jwt")
+@CrossOrigin("*")
 public class JwtController {
 
     @GetMapping("/createAccessToken")

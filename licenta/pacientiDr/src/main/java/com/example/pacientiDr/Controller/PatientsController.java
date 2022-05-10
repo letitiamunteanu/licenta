@@ -1,7 +1,7 @@
 package com.example.pacientiDr.Controller;
 
-import com.example.pacientiDr.Model.Doctors;
 import com.example.pacientiDr.Model.Patients;
+import com.example.pacientiDr.POJO.UsersPatientsPOJO;
 import com.example.pacientiDr.Services.PatientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -10,12 +10,12 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 
 @RestController
-@RequestMapping(value = "api/patients", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/patients", produces = {MediaType.APPLICATION_JSON_VALUE})
+@CrossOrigin("*")
 public class PatientsController {
 
     private final PatientsService patientsService;
@@ -25,35 +25,51 @@ public class PatientsController {
         this.patientsService = patientsService;
     }
 
-    @PostMapping
-    public Patients addNewPatient(@RequestBody Patients patient, @RequestHeader("Authorization") String jwt){
-        return patientsService.addPatient(patient, jwt);
+
+    @PostMapping("/{username}")
+    public ResponseEntity<?> addNewPatient(@PathVariable String username, @RequestBody Patients patient, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.addPatient(patient, jwt, username));
+    }
+
+    @PostMapping("/link")
+    public ResponseEntity<?> linkUserToProfile(@RequestBody UsersPatientsPOJO obj, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.addUserToProfile(obj,jwt));
     }
 
     @GetMapping("/allPatients")
-    public List<Patients> getAllPatients(@RequestHeader("Authorization") String jwt){
-        return patientsService.getAllPatients(jwt);
+    public ResponseEntity<?> getAllPatients(@RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.getAllPatients(jwt));
     }
 
-    @GetMapping("/id/{id}")
-    public Patients getPatientById(@PathVariable String id, @RequestHeader("Authorization") String jwt){
-        return patientsService.getPatientById(id, jwt);
+    @GetMapping("/{id}/{username}")
+    public ResponseEntity<?> getPatientById(@PathVariable Integer id, @PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.getPatientById(id, jwt, username));
     }
 
     @GetMapping("/cnp/{cnp}")
-    public Patients getPatientByCnp(@PathVariable String cnp, @RequestHeader("Authorization") String jwt){
-        return patientsService.getPatientByCnp(cnp, jwt);
+    public ResponseEntity<?> getPatientByCnp(@PathVariable String cnp, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.getPatientByCnp(cnp, jwt));
     }
 
     @GetMapping("/name/{name}")
-    public List<Patients> getPatientByName(@PathVariable String name, @RequestHeader("Authorization") String jwt){
-        return patientsService.getPatientByName(name, jwt);
+    public ResponseEntity<?> getPatientByName(@PathVariable String name, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.getPatientByPartialName(name, jwt));
     }
 
-    @PatchMapping("/{id}")
-    public Patients updatePatient(@PathVariable String id, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt){
+    @GetMapping("/checkUserProfile/{username}")
+    public ResponseEntity<?> checkProfileForUser(@PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.patientExistsByUsername(username,jwt));
+    }
 
-        Patients searchedPatient = patientsService.getPatientById(id,jwt);
+    @GetMapping("/getPatientUsername/{id}/{username}")
+    public ResponseEntity<?> getUsernameFromPatientIf(@PathVariable Integer id, @PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.getUsernameFromPatientId(id, username, jwt));
+    }
+
+    @PatchMapping("/{id}/{username}")
+    public ResponseEntity<?> updatePatient(@PathVariable Integer id, @PathVariable String username, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt){
+
+        Patients searchedPatient = patientsService.getPatientById(id,jwt, username);
 
         fields.forEach((k, v) -> {
 
@@ -64,11 +80,17 @@ public class PatientsController {
             ReflectionUtils.setField(field, searchedPatient, v);
         });
 
-        return patientsService.update(id, searchedPatient, jwt);
+        return ResponseEntity.ok().body(patientsService.update(id, searchedPatient, jwt, username));
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePatient(@PathVariable String id, @RequestHeader("Authorization") String jwt){
-        patientsService.delete(id, jwt);
+    @DeleteMapping("/deletePatient/{username}")
+    public ResponseEntity<?> deletePatient(@PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.deletePatientByUsername(username, jwt));
     }
+
+    @DeleteMapping("/deletePatient/{id}/{username}")
+    public ResponseEntity<?> deleteLinkAndProfile(@PathVariable Integer id, @PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(patientsService.deleteUserPatient(id, username,jwt));
+    }
+
 }

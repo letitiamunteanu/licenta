@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { LoginForm } from "./Login/loginForm";
+import { LoginForm } from "./Forms/loginForm";
 import {motion} from "framer-motion";
 import { AccountContext } from "./accountContext";
-import { SignUpForm } from "./Login/signupForm";
+import { SignUpForm } from "./Forms/signupForm";
 
 const BoxContainer = styled.div`
     width: 500px; //pot modifica
@@ -11,8 +11,6 @@ const BoxContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 19px;
-    //background: #f08080;
-    //box-shadow: 0 0 2px rgba(15,15,15,0.28);
     position: relative;
     //overflow: hidden;
     margin: 20px;
@@ -59,14 +57,14 @@ const HeaderContainer = styled.div`
     
 `;
 
-const HeaderText = styled.h2`
+
+export const HeaderText = styled.h2`
     font-size: 30px;
     font-weight: 400;
     line-height: 1.24;
     color: #010002;
     z-index: 10;
     margin: 0;
-    //margin-left: 30px;
 `;
 
 const SmallText = styled.h5`

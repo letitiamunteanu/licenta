@@ -1,0 +1,81 @@
+id_simptom,nume_simptom
+5,ameteala
+46,"amortirea membrelor"
+67,"arsuri gastrice"
+36,astenie
+94,"atacuri de panica"
+104,balonare
+103,"cazi sau nu poti merge"
+1,cefalee
+95,cosmaruri
+38,crampe
+88,"dezorientare si confuzie temporala"
+80,"dificultate sau durere la inghitire"
+87,"dificultati in concentrare"
+73,disfagie
+35,dispnee
+75,"durere de cap"
+45,"durere de spate"
+65,"durere de stomac"
+53,"durere in etaj abdominal superior"
+78,"durere in gat"
+11,"durere in piept"
+72,"durere la nivelul sinusurilor"
+105,"durerea epigastrica"
+10,"dureri abdominale"
+62,"dureri de umar-gat-brat"
+57,"dureri musculare"
+76,"edem membre inferioare"
+106,eructatii
+8,febra
+54,frisoane
+81,"gat intepenit"
+7,greata
+101,"greutate in vorbire"
+52,"gust amar"
+64,"hemoragie nazala"
+92,hiperventilatie
+66,indigestie
+108,"intoleranta la alimente grase"
+77,"intoleranta la efort"
+70,"junghi toracic"
+97,"lipsa de energie"
+49,"lipsa de gust"
+56,"lipsa de miros"
+44,"lipsa poftei de mancare"
+100,"mancarimi la nivelul picioarelor"
+6,"nas infundat"
+3,oboseala
+40,otalgie
+34,paloare
+63,palpitatii
+43,"pierdere in greutate"
+50,poliurie
+86,"probleme de memorie"
+89,"probleme vizuale sau de orientare in spatiu"
+79,"respiratie neplacuta"
+91,"respiratie suieratoare"
+107,"satietate timpurie"
+74,"scaune cu sange"
+90,"schimbari de dispozitie"
+55,"secretii nazale abundente"
+99,"senzatia de greutate, neliniste, oboseala"
+37,"senzatie de arsura in piept dupa masa"
+51,"senzatie de greata dupa mese copioase"
+96,"senzatie de lesin"
+71,"senzatie de presiune la nivelul capului"
+48,"sete intensa"
+93,"stare de rau si tremurat"
+41,"tiuit in urechi"
+61,transpiratie
+47,"tulburari de respiratie"
+42,"tulburari de tranzit"
+59,"tulburari de vedere"
+9,tuse
+68,"tuse productiva"
+69,"tuse seaca"
+98,"umflarea gleznei si a gambei"
+60,"urinari frecvente"
+39,varsaturi
+102,"vezi dublu sau deloc"
+58,"voce ragusita"

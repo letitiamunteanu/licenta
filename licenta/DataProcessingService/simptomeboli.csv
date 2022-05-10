@@ -1,0 +1,117 @@
+nume_boala,nume_simptom
+anemie,astenie
+anemie,paloare
+anemie,dispnee
+anemie,oboseala
+anemie,ameteala
+reflux gastro-esofagian,senzatie de arsura in piept dupa masa
+reflux gastro-esofagian,disfagie
+reflux gastro-esofagian,tuse
+reflux gastro-esofagian,greata
+gastroenterita,crampe
+gastroenterita,greata
+gastroenterita,varsaturi
+otita,otalgie
+otita,cefalee
+otita,tiuit in urechi
+otita,nas infundat
+cancer de colon,tulburari de tranzit
+cancer de colon,pierdere in greutate
+cancer de colon,lipsa poftei de mancare
+cancer de colon,scaune cu sange
+scolioza,durere de spate
+scolioza,amortirea membrelor
+scolioza,tulburari de respiratie
+diabet zaharat de tip II,sete intensa
+diabet zaharat de tip II,pierdere in greutate
+diabet zaharat de tip II,poliurie
+dischinezie biliara,senzatie de greata dupa mese copioase
+dischinezie biliara,durere in etaj abdominal superior
+dischinezie biliara,varsaturi
+dischinezie biliara,gust amar
+gripa,nas infundat
+gripa,durere de cap
+gripa,frisoane
+gripa,febra
+gripa,secretii nazale abundente
+covid,lipsa de gust
+covid,lipsa de miros
+covid,frisoane
+covid,febra
+covid,oboseala
+covid,dureri musculare
+covid,voce ragusita
+covid,tuse seaca
+miopie-hipermetropie,tulburari de vedere
+miopie-hipermetropie,durere de cap
+miopie-hipermetropie,ameteala
+angina pectorala,durere in piept
+angina pectorala,dispnee
+angina pectorala,oboseala
+angina pectorala,dureri de umar-gat-brat
+angina pectorala,transpiratie
+insuficienta cardiaca,oboseala
+insuficienta cardiaca,palpitatii
+insuficienta cardiaca,edem membre inferioare
+insuficienta cardiaca,intoleranta la efort
+insuficienta cardiaca,durere in piept
+insuficienta cardiaca,tuse
+hipertensiune,durere de cap
+hipertensiune,hemoragie nazala
+hipertensiune,dispnee
+hipertensiune,ameteala
+gastrita,durere de stomac
+gastrita,greata
+gastrita,varsaturi
+gastrita,indigestie
+gastrita,arsuri gastrice
+pneumonie,tuse productiva
+pneumonie,frisoane
+pneumonie,febra
+pneumonie,junghi toracic
+sinuzita,nas infundat
+sinuzita,durere de cap
+sinuzita,secretii nazale abundente
+sinuzita,senzatie de presiune la nivelul capului
+sinuzita,durere la nivelul sinusurilor
+amigdalita,durere in gat
+amigdalita,febra
+amigdalita,voce ragusita
+amigdalita,cefalee
+amigdalita,respiratie neplacuta
+amigdalita,dificultate sau durere la inghitire
+amigdalita,gat intepenit
+alzheimer,probleme de memorie
+alzheimer,dificultati in concentrare
+alzheimer,dezorientare si confuzie temporala
+alzheimer,probleme vizuale sau de orientare in spatiu
+alzheimer,schimbari de dispozitie
+astm bronsic,senzatie de presiune la nivelul capului
+astm bronsic,dispnee
+astm bronsic,respiratie suieratoare
+astm bronsic,tuse
+anxietate,transpiratie
+anxietate,palpitatii
+anxietate,greata
+anxietate,stare de rau si tremurat
+anxietate,atacuri de panica
+anxietate,cosmaruri
+anxietate,senzatie de lesin
+anxietate,lipsa de energie
+anxietate,greata
+varice,mancarimi la nivelul picioarelor
+varice,crampe
+varice,"senzatia de greutate, neliniste, oboseala"
+varice,umflarea gleznei si a gambei
+vertij,febra
+vertij,durere de cap
+vertij,greutate in vorbire
+vertij,vezi dublu sau deloc
+vertij,cazi sau nu poti merge
+ulcerul gastric si duodenal,varsaturi
+ulcerul gastric si duodenal,disfagie
+ulcerul gastric si duodenal,satietate timpurie
+ulcerul gastric si duodenal,durerea epigastrica
+ulcerul gastric si duodenal,balonare
+ulcerul gastric si duodenal,eructatii
+ulcerul gastric si duodenal,intoleranta la alimente grase

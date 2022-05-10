@@ -15,7 +15,6 @@ public class JwtDecoder {
 
         System.out.println("token: " + token);
         try {
-
             String JwtToken = token.substring("Bearer ".length());
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = verifier.verify(JwtToken);

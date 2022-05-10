@@ -1,0 +1,173 @@
+AMENIE: - medicina de familie
+1. paloare
+2. dispnee
+3. astenie
+4. oboseala (fatigabilitate)
+5. ameteala
+
+REFLUX GASTRO-ESOFAGIAN - gastroenterologie
+1. senzatie de arsura in piept dupa masa
+2. disfagie (inghiti cu dificultate)
+3. greata
+4. tuse
+
+GASTROENTERITA: - gastroenterologie
+1. crampe
+2. greata
+3. varsaturi
+4. diaree
+
+OTITA: - ORL
+1. otalgie
+2. cefalee
+3. tiuit in urechi
+4. nas infundat
+
+CANCER DE COLON: - chirurgie generala
+1. tulburari de tranzit
+2. pierdere in greutate
+3. lipsa poftei de mancare
+4. scaune cu sange
+
+SCOLIOZA: - reunatologie/ortopedie
+1. durere de spate
+2. amortirea membrelor
+3. tulburari de respiratie
+
+DIABET ZAHARAT de tip II: - diabet si boli de nutritie
+1. sete intensa
+2. pierdere in greutate
+3. poliurie
+
+DISCHINEZIE BILIARA: - gastroenterologie
+1. senzatie de greata dupa mese copioase
+2. durere in etaj abdominal superior
+3. varsaturi
+4. gust amar
+
+GRIPA: - infectioase
+1. nas infundat
+2. dureri de cap
+3. frisoane
+4. febra
+5. secretii nazale abundente
+
+COVID: - infectioase
+1. lipsa de gust
+2. lipsa de miros
+3. frisoane
+4. febra
+5. oboseala
+6. dureri musculare
+7. voce ragusita
+8. tuse seaca
+
+MIOPIE/HIPERMETROPIE - oftalmologie
+1. tulburari de vedere
+2. durere de cap
+3. ameteala
+
+
+INFECTIE URINARA - urologie
+1. urinari frecvente
+2. senzatie de usturime la urimat
+3. dureri abdominale
+
+ANGINA PECTORALA - cardiologie
+1. dureri in piept
+2. dispnee
+3. oboseala
+4. dureri in umar-gat-brat
+5. transpiratie
+
+INSUFICIENTA CARDIACA - cardiologie
+1. oboseala
+2. palpitatii
+3. edem membre inferioare
+4. intoleranta la efort
+5. tuse
+6. dureri in pietpt
+
+HIPERTENSIUNE: - cardiologie
+1. dureri de cap
+2. hemoragie nazala
+3. dispnee
+4. ameteala
+
+GASTRITA - gastroenterologie
+1. durere de stomac
+2. greturi
+3. varsaturi
+4. indigestie
+5. arsuri gastrice
+
+PNEUMONIE - penumologie
+1. tuse productiva
+2. frisoane
+3. febra
+4. junghi toracic
+
+SINUZITA : ORL
+1. nas infundat
+2. durere de cap
+3. secretii nazale
+4. senzatie de presiune la nivelul capului
+5. durere la nivelul sinusurilor
+
+AMIGDALITA:
+1. durere in gat
+2. febra
+3. voce ragusita
+4. cefalee
+5. respiratie neplacuta
+6. dificultate sau durere la inghitire
+7. gat intepenit
+
+Alzheimer:
+1. probleme de memorie
+2. dificultati in concentrare
+3. dezorientare si confuzie temporala
+4. probleme vizuale sau de orientare in spatiu
+5. schimbari de dispozitie
+
+ASTM BRONSIC:
+1. senzatie de presiune la nivelul capului
+2. dispnee
+3. respiratie suieratoare
+4. tuse
+
+ANXIETATE:
+1. transpiratie
+2. palpitatii
+3. hiperventilatie
+4. stare de rau si tremurat
+5. atacuri de panica
+6. cosmaruri
+7. Senzatie de lesin
+8. lipsa de energie
+9. greata
+
+VARICELE:
+1. umflarea gleznei si a gambei
+2. senzatia de greutate, neliniste, oboseala
+4. crampe
+5. mancarimi la nivelul picioarelor
+
+VERTIJUL: 
+1. febra
+2. durere de cap
+3. greutate in vorbire
+4. vezi dublu sau deloc 
+5. cazi sau nu poti merge
+
+Ulcerul gastric si duodenal:
+1. durerea epigastrica
+2. balonare
+3. eructatii
+4. intoleranta la alimente grase
+5. disfagie
+6. varsaturi
+7. satietate timpurie
+
+URTICARIE:
+1. 

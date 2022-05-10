@@ -26,20 +26,19 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter{
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if(request.getServletPath().equals("/api/login/auth") || request.getServletPath().equals("/api/userController/refreshToken")){
+        if(request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/userController/refreshToken")){
             filterChain.doFilter(request,response);
+
         }
         else{
             String authorizationHeader = request.getHeader(AUTHORIZATION);
 
             if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
-
                     String decodedJWT = jwtDecoder(authorizationHeader);
 
                     if(decodedJWT.equals("Expired") || decodedJWT.equals("Invalid")){
                         response.setStatus(FORBIDDEN.value());
                         response.setContentType(APPLICATION_JSON_VALUE);
-
                         ResponsePojo res = new ResponsePojo(FORBIDDEN.value(),decodedJWT);
                         new ObjectMapper().writeValue(response.getOutputStream(), res);
                         return;

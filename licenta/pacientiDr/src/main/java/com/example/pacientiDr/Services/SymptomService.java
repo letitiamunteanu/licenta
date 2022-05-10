@@ -1,7 +1,6 @@
 package com.example.pacientiDr.Services;
 
 import com.example.pacientiDr.Exception.*;
-import com.example.pacientiDr.Model.Patients;
 import com.example.pacientiDr.Model.Symptom;
 import com.example.pacientiDr.Repository.SymptomRepository;
 import lombok.RequiredArgsConstructor;
@@ -87,6 +86,10 @@ public class SymptomService {
             }
         }
     }
+    public List<Symptom> getAllSymptomsContaining(String chars) {
+        return symptomRepository.findByNumeSimptomContaining(chars);
+    }
+
 
     public List<Symptom> getAllSymptoms(String jwt) {
 

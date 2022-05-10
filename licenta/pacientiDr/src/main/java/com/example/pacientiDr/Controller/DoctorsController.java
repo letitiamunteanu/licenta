@@ -1,18 +1,21 @@
 package com.example.pacientiDr.Controller;
 
 import com.example.pacientiDr.Model.Doctors;
+import com.example.pacientiDr.POJO.UsersDoctorsPOJO;
+import com.example.pacientiDr.POJO.UsersPatientsPOJO;
 import com.example.pacientiDr.Services.DoctorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/doctors", produces = {MediaType.APPLICATION_JSON_VALUE})
+@CrossOrigin("*")
 public class DoctorsController {
 
     private final DoctorsService doctorsService;
@@ -22,35 +25,51 @@ public class DoctorsController {
         this.doctorsService = doctorsService;
     }
 
-    @PostMapping()
-    public Doctors addNewDoctor(@RequestBody Doctors doctor, @RequestHeader("Authorization") String jwt){
-        return doctorsService.addNewDoctor(doctor, jwt);
+    @PostMapping("/add/{username}")
+    public ResponseEntity<?> addNewDoctor(@PathVariable String username, @RequestBody Doctors doctor, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.addNewDoctor(doctor, jwt, username));
+    }
+
+    @PostMapping("/link")
+    public ResponseEntity<?> linkDoctorToProfile(@RequestBody UsersDoctorsPOJO obj, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.addDrToProfile(obj,jwt));
     }
 
     @GetMapping("/allDoctors")
-    public List<Doctors> getAllDoctors(@RequestHeader("Authorization") String jwt){
-        return doctorsService.getDoctors(jwt);
+    public ResponseEntity<?> getAllDoctors(@RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.getDoctors(jwt));
     }
 
-    @GetMapping("/id/{id}")
-    public Doctors getDoctorById(@PathVariable String id, @RequestHeader("Authorization") String jwt){
-        return doctorsService.getDoctorById(id, jwt);
+    @GetMapping("/id/{id}/{username}")
+    public ResponseEntity<?> getDoctorById(@PathVariable String id, @PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.getDoctorById(id, jwt, username));
     }
 
     @GetMapping("/name/{name}")
-    public List<Doctors> getDoctorsByName(@PathVariable String name, @RequestHeader("Authorization") String jwt){
-        return doctorsService.getDoctorByName(name, jwt);
+    public ResponseEntity<?> getDoctorsByPartialName(@PathVariable String name){
+        return ResponseEntity.ok().body(doctorsService.getDoctorByPartialName(name));
     }
 
     @GetMapping("/specialization/{specialization}")
-    public List<Doctors> getDoctorsBySpecialization(@PathVariable String specialization, @RequestHeader("Authorization") String jwt){
-        return doctorsService.getDoctorBySpecialization(specialization, jwt);
+    public ResponseEntity<?> getDoctorsBySpecialization(@PathVariable String specialization, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.getDoctorBySpecialization(specialization, jwt));
     }
 
-    @PatchMapping("/{id}")
-    public Doctors updateDoctor(@PathVariable String id, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt){
+    @GetMapping("/checkDrProfile/{username}")
+    public ResponseEntity<?> checkProfileForDoctor(@PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.doctorExistsByUsername(username,jwt));
+    }
 
-        Doctors doctor = doctorsService.getDoctorById(id,jwt);
+    @GetMapping("/getUsername/{cuim}/{username}")
+    public ResponseEntity<?> getUsernameFromCuim(@PathVariable String username, @PathVariable String cuim, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.getUsernameFromCuim(cuim, username, jwt));
+    }
+
+
+    @PatchMapping("/update/{id}/{username}")
+    public ResponseEntity<?> updateDoctor(@PathVariable String id, @PathVariable String username, @RequestBody Map<Object, Object> fields, @RequestHeader("Authorization") String jwt){
+
+        Doctors doctor = doctorsService.getDoctorById(id,jwt,username);
 
         fields.forEach((k, v) -> {
 
@@ -61,11 +80,17 @@ public class DoctorsController {
             ReflectionUtils.setField(field, doctor, v);
         });
 
-        return doctorsService.updateDoctor(id, doctor, jwt);
+        return ResponseEntity.ok().body(doctorsService.updateDoctor(id, doctor, jwt, username));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDoctor(@PathVariable String id, @RequestHeader("Authorization") String jwt){
+    public ResponseEntity<?> deleteDoctor(@PathVariable String id, @RequestHeader("Authorization") String jwt){
         doctorsService.deleteDoctor(id, jwt);
+        return ResponseEntity.ok().body("");
+    }
+
+    @DeleteMapping("/delete/{id}/{username}")
+    public ResponseEntity<?> deleteLinkAndProfile(@PathVariable String id, @PathVariable String username, @RequestHeader("Authorization") String jwt){
+        return ResponseEntity.ok().body(doctorsService.deleteUserDoctor(id, username,jwt));
     }
 }
